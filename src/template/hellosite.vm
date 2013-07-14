@@ -1,0 +1,13 @@
+
+ 
+#foreach ($element in $info.flows)
+      #foreach ($p in   $element.protocols)
+       $p.type   $p.code   $p.value
+struct PacketIntMailRead {
+          #foreach ($it in   $p.items)
+    $it.type  $it.code  ;
+        #end
+}
+    #end
+     $velocityCount 
+#end
