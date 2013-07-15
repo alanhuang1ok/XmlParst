@@ -15,6 +15,7 @@ public class Item {
     private String code;
     private String enumStr;
     private String text;
+    private String readFunc;
     private List<Item> items;
 
     /**
@@ -85,5 +86,19 @@ public class Item {
      */
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    /**
+     * @return the readFunc
+     */
+    public String getReadFunc() {
+        return readFunc;
+    }
+
+    /**
+     * @param readFunc the readFunc to set
+     */
+    public void setReadFunc(String readFunc) {
+        this.readFunc = readFunc;
     }
 }

@@ -16,4 +16,11 @@ public class TypeUtil {
         }
         return t;
     }
+   public static String getFun(String t){
+        if(t.equals("int"))
+        {
+            return "ReadUInt";
+        }
+        return t;
+   }
 }

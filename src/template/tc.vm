@@ -1,0 +1,11 @@
+#foreach ($p in   $tc)
+    //  $p.code    $p.value 
+     #foreach ($it in   $p.items)
+    $it.type  $it.code  ;   //  $it.text
+     #end
+    #foreach ($it in   $p.items)
+    cout<< "please input  $it.code "<<endl;
+    cin>>  $it.code  ;   //  $it.text
+     #end
+
+ #end

@@ -24,10 +24,17 @@ import org.xml.sax.InputSource;
  */
 public class XmlUtil {
 
-    private Item getLists(   Item subitemInfo,Element  e){
-        
-        return null;
+    private Item getLists(Item subitemInfo, Element e) {
+        if ("list".equals(TypeUtil.getType(e.getAttribute("type").getValue()))) {
+            Item subitem = new Item();
+            subitem.setCode(e.getAttribute("code").getValue());
+            subitem.setType(TypeUtil.getType(e.getAttribute("type").getValue()));
+            subitem.setText(e.getValue());
+            subitemInfo.getItems().add(subitem);
+        }
+        return subitemInfo;
     }
+
     public static PacketInfo xmlElements(String xmlDoc) {
         PacketInfo packets = null;
         //创建一个新的字符串
@@ -69,6 +76,7 @@ public class XmlUtil {
                         Item itemInfo = new Item();
                         itemInfo.setCode(items.getAttribute("code").getValue());
                         itemInfo.setType(TypeUtil.getType(items.getAttribute("type").getValue()));
+                        itemInfo.setReadFunc(TypeUtil.getFun(items.getAttribute("type").getValue()));
                         itemInfo.setText(items.getValue());
                         if ("list".equals(TypeUtil.getType(items.getAttribute("type").getValue()))) {
                             Item subitemInfo = new Item();
@@ -78,6 +86,7 @@ public class XmlUtil {
                                 Item subitem = new Item();
                                 subitem.setCode(subitems.getAttribute("code").getValue());
                                 subitem.setType(TypeUtil.getType(subitems.getAttribute("type").getValue()));
+                                subitem.setReadFunc(TypeUtil.getFun(subitems.getAttribute("type").getValue()));
                                 subitem.setText(items.getValue());
                                 subitemInfo.getItems().add(subitem);
                             }
